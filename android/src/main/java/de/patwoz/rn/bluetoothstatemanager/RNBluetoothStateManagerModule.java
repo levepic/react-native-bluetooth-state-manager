@@ -164,7 +164,16 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
         returnSet.add(bluetoothAdapter.isMultipleAdvertisementSupported());
         returnSet.add(bluetoothAdapter.isOffloadedFilteringSupported());
         returnSet.add(bluetoothAdapter.isOffloadedScanBatchingSupported());
-        
+        if (Integer.valueOf(android.os.Build.VERSION.SDK) >= 26) {
+            returnSet.add(bluetoothAdapter.isLeCodedPhySupported());
+            returnSet.add(bluetoothAdapter.isLeExtendedAdvertisingSupported());
+            returnSet.add(bluetoothAdapter.isLePeriodicAdvertisingSupported());
+        }
+        else {
+            returnSet.add(false);
+            returnSet.add(false);
+            returnSet.add(false);
+        }
         
         Boolean[] returnArray = new Boolean[returnSet.size()];
         returnArray = returnSet.toArray(returnArray);
