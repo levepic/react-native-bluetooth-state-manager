@@ -145,15 +145,35 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
   
   @ReactMethod
   public void supportedFeatures(Promise promise) {
-    BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-     
-    promise.resolve(bluetoothAdapter.isEnabled());
+    try {
+        BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+        
+        List<Boolean> returnSet = new ArrayList<Boolean>();
+        
+        returnSet.add(BluetoothAdapter.isMultipleAdvertisementSupported());
+        returnSet.add(BluetoothAdapter.isOffloadedFilteringSupported());
+        returnSet.add(BluetoothAdapter.isOffloadedScanBatchingSupported());
+        
+        
+        Boolean[] returnArray = new Boolean[returnSet.size()];
+        returnArray = returnSet.toArray(returnArray);
+        
+        WritableArray promiseArray=Arguments.createArray();
+        for(int i=0;i<returnArray.length;i++){
+            promiseArray.pushBoolean(returnArray[i]);
+        }
+        promise.resolve(promiseArray);
+    }
+    catch(Exception e){
+        promise.reject(e);
+    }
     /*promise.resolve(bluetoothAdapter.isLe2MPhySupported());*/
     /*
+    api lvl 26:
     isLeCodedPhySupported() 
     isLeExtendedAdvertisingSupported()
     isLePeriodicAdvertisingSupported() 
-            
+    api lvl 21:            
     isMultipleAdvertisementSupported() 
     isOffloadedFilteringSupported() 
     isOffloadedScanBatchingSupported() 
