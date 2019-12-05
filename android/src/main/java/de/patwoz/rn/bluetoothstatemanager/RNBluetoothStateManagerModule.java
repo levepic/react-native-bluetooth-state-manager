@@ -142,6 +142,22 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
     currentActivity.startActivity(INTENT_OPEN_BLUETOOTH_SETTINGS);
     promise.resolve(null);
   }
+  
+  @ReactMethod
+  public void supportedFeatures(Promise promise) {
+    BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
+    promise.resolve(bluetoothAdapter.isLe2MPhySupported());
+    /*
+    isLeCodedPhySupported() 
+    isLeExtendedAdvertisingSupported()
+    isLePeriodicAdvertisingSupported() 
+    
+    isMultipleAdvertisementSupported() 
+    isOffloadedFilteringSupported() 
+    isOffloadedScanBatchingSupported() 
+    */
+  }
+  
 
   // --------------------------------------------------------------------------------------------- -
   // BLUETOOTH STATE CHANGE
