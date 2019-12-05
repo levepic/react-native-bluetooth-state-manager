@@ -1,4 +1,4 @@
-# react-native-bluetooth-state-manager
+# fork of react-native-bluetooth-state-manager
 
 fast fork to provide features list for my use case:
 
