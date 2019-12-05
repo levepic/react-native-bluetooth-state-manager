@@ -8,6 +8,7 @@ export const INITIAL_STATE = {
   requestToEnable: noop,
   enable: noop,
   disable: noop,
+  supportedFeatures: noop,
 };
 
 export default createContext(INITIAL_STATE);

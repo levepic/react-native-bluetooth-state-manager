@@ -26,6 +26,7 @@ class BluetoothStatus extends React.PureComponent {
         requestToEnable: BluetoothStateManager.requestToEnable,
         enable: BluetoothStateManager.enable,
         disable: BluetoothStateManager.disable,
+        supportedFeatures: BluetoothStateManager.supportedFeatures,
       },
     };
     this.bluetoothStateListener = null;
