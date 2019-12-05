@@ -1,5 +1,19 @@
 # react-native-bluetooth-state-manager
 
+fast fork to provide features list for my use case:
+isMultipleAdvertisementSupported());
+isOffloadedFilteringSupported());
+isOffloadedScanBatchingSupported());
+isLeCodedPhySupported());
+isLeExtendedAdvertisingSupported());
+isLePeriodicAdvertisingSupported());
+
+usage: 
+
+BluetoothStateManager.supportedFeatures().then(result => {
+  console.log("supportedFeatures:", result)
+});
+
 [![npm version](https://badge.fury.io/js/react-native-bluetooth-state-manager.svg)](https://badge.fury.io/js/react-native-bluetooth-state-manager) [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 The only purpose of this library is to manage the Bluetooth state. Not more, not less.
