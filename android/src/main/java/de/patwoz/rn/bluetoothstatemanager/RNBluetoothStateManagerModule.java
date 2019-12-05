@@ -146,12 +146,14 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
   @ReactMethod
   public void supportedFeatures(Promise promise) {
     BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
-    promise.resolve(bluetoothAdapter.isLe2MPhySupported());
+     
+    promise.resolve(bluetoothAdapter.isEnabled());
+    /*promise.resolve(bluetoothAdapter.isLe2MPhySupported());*/
     /*
     isLeCodedPhySupported() 
     isLeExtendedAdvertisingSupported()
     isLePeriodicAdvertisingSupported() 
-    
+            
     isMultipleAdvertisementSupported() 
     isOffloadedFilteringSupported() 
     isOffloadedScanBatchingSupported() 
