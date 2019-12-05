@@ -21,9 +21,14 @@ import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.modules.core.DeviceEventManagerModule;
-
+/*
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;*/
+import java.util.*;
+/*import java.util.WritableArray;*/
+
 
 public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
 
@@ -145,14 +150,14 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
   
   @ReactMethod
   public void supportedFeatures(Promise promise) {
-    try {
+    try {    
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         
         List<Boolean> returnSet = new ArrayList<Boolean>();
         
-        returnSet.add(BluetoothAdapter.isMultipleAdvertisementSupported());
-        returnSet.add(BluetoothAdapter.isOffloadedFilteringSupported());
-        returnSet.add(BluetoothAdapter.isOffloadedScanBatchingSupported());
+        returnSet.add(bluetoothAdapter.isMultipleAdvertisementSupported());
+        returnSet.add(bluetoothAdapter.isOffloadedFilteringSupported());
+        returnSet.add(bluetoothAdapter.isOffloadedScanBatchingSupported());
         
         
         Boolean[] returnArray = new Boolean[returnSet.size()];
@@ -166,10 +171,10 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
     }
     catch(Exception e){
         promise.reject(e);
-    }
+    }    
     /*promise.resolve(bluetoothAdapter.isLe2MPhySupported());*/
     /*
-    api lvl 26:
+    api lvl 26:    
     isLeCodedPhySupported() 
     isLeExtendedAdvertisingSupported()
     isLePeriodicAdvertisingSupported() 
