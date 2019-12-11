@@ -163,8 +163,6 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         
         WritableMap map = new WritableNativeMap();
-        map.putBoolean("teszt",false);
-        map.putBoolean("teszt2",false);
         
         if (Integer.valueOf(android.os.Build.VERSION.SDK) >= 21) {
             map.putBoolean("isMultipleAdvertisementSupported", bluetoothAdapter.isMultipleAdvertisementSupported());
