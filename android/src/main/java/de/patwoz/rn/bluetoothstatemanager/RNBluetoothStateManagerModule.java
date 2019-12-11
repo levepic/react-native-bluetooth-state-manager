@@ -162,45 +162,31 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
     try {    
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         
-        
         WritableMap map = new WritableNativeMap();
         map.putBoolean("teszt",false);
         map.putBoolean("teszt2",false);
-        promise.resolve(map);
         
-        /*
-        List<Boolean> returnSet = new ArrayList<Boolean>();
         if (Integer.valueOf(android.os.Build.VERSION.SDK) >= 21) {
-            returnSet.add(bluetoothAdapter.isMultipleAdvertisementSupported());
-            returnSet.add(bluetoothAdapter.isOffloadedFilteringSupported());
-            returnSet.add(bluetoothAdapter.isOffloadedScanBatchingSupported());
+            map.putBoolean("isMultipleAdvertisementSupported", bluetoothAdapter.isMultipleAdvertisementSupported());
+            map.putBoolean("isOffloadedFilteringSupported",bluetoothAdapter.isOffloadedFilteringSupported());
+            map.putBoolean("isOffloadedScanBatchingSupported",bluetoothAdapter.isOffloadedScanBatchingSupported());
         }
         else {
-            returnSet.add(false);
-            returnSet.add(false);
-            returnSet.add(false);
+            map.putBoolean("isMultipleAdvertisementSupported",false);
+            map.putBoolean("isOffloadedFilteringSupported",false);
+            map.putBoolean("isOffloadedScanBatchingSupported",false);
         }        
         if (Integer.valueOf(android.os.Build.VERSION.SDK) >= 26) {
-            returnSet.add(bluetoothAdapter.isLeCodedPhySupported());
-            returnSet.add(bluetoothAdapter.isLeExtendedAdvertisingSupported());
-            returnSet.add(bluetoothAdapter.isLePeriodicAdvertisingSupported());
+            map.putBoolean("isLeCodedPhySupported",bluetoothAdapter.isLeCodedPhySupported());
+            map.putBoolean("isLeExtendedAdvertisingSupported",bluetoothAdapter.isLeExtendedAdvertisingSupported());
+            map.putBoolean("isLePeriodicAdvertisingSupported",bluetoothAdapter.isLePeriodicAdvertisingSupported());
         }
         else {
-            returnSet.add(false);
-            returnSet.add(false);
-            returnSet.add(false);
-        }
-        
-        Boolean[] returnArray = new Boolean[returnSet.size()];
-        returnArray = returnSet.toArray(returnArray);
-        
-        WritableArray promiseArray=Arguments.createArray();
-        for(int i=0;i<returnArray.length;i++){
-            promiseArray.pushBoolean(returnArray[i]);
-        }
-        
-        promise.resolve(promiseArray);
-        */
+            map.putBoolean("isLeCodedPhySupported",false);
+            map.putBoolean("isLeExtendedAdvertisingSupported",false);
+            map.putBoolean("isLePeriodicAdvertisingSupported",false);
+        }        
+        promise.resolve(map);
     }
     catch(Exception e){
         promise.reject(e);
