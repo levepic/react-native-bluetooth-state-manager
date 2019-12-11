@@ -162,11 +162,13 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
     try {    
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         
-        /*
+        
         WritableMap map = new WritableNativeMap();
         map.putBoolean("teszt",false);
+        map.putBoolean("teszt2",false);
         promise.resolve(map);
-        */
+        
+        /*
         List<Boolean> returnSet = new ArrayList<Boolean>();
         if (Integer.valueOf(android.os.Build.VERSION.SDK) >= 21) {
             returnSet.add(bluetoothAdapter.isMultipleAdvertisementSupported());
@@ -198,6 +200,7 @@ public class RNBluetoothStateManagerModule extends ReactContextBaseJavaModule {
         }
         
         promise.resolve(promiseArray);
+        */
     }
     catch(Exception e){
         promise.reject(e);
